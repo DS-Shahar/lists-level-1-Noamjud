@@ -1,0 +1,96 @@
+
+
+public class homeWork {
+
+	public static Node<Integer> q1(int []a )
+	{
+		if(a.length==0)
+		{
+			return null;
+		}
+		int i=0;
+		Node<Integer> b = new Node<Integer> (a[0]);
+		Node<Integer> c=b;
+		
+			for(i=1; i<a.length; i++)
+			{
+			c.setNext(new Node<Integer>(a[i]));
+			c=c.getNext();
+			}
+		
+		return b;
+	}
+
+
+public static void q2( Node<Integer> a)
+	{
+		 Node<Integer> current=a;
+		 while (current!= null) {
+		        System.out.println(current.getValue());  
+		        current=current.getNext(); 
+		    }
+	}
+
+	public static Node<Integer> q3()
+	{	Node<Integer> a= null;
+		Node<Integer> b= null;
+		System.out.println("please enter a number");
+		int answer=reader.nextInt();
+		
+		while(answer!=-1)
+		{
+			Node<Integer> newNode = new Node<Integer>(answer);
+			
+			if(a==null)
+			{
+				a=newNode;
+				b=newNode;
+			}
+			else
+			{
+				b.setNext(newNode);
+				b=newNode;
+			}
+			System.out.println("please enter a number");
+			answer=reader.nextInt();
+		}
+		return a;
+		
+	}
+public static void q4(Node<Integer> x)
+	{
+		Node<Integer> current=x;
+		while (current!= null) {
+			if(current.getValue()%2==0)
+			{
+			System.out.println(current.getValue());
+			}   
+			current=current.getNext(); 
+	    }
+
+
+
+    public static boolean q5(Node<Integer> x,int num)
+	{
+		Node<Integer> current=x;
+		while (current!= null) {
+			if(current.getValue()==num)
+			{
+			return true;
+			}
+			current=current.getNext(); 
+
+			
+	    }
+		return false;
+	}
+
+
+	public static void main(String[] args) {
+    public static Scanner reader=new Scanner(System.in);
+
+		// TODO Auto-generated method stub
+
+	}
+
+}
