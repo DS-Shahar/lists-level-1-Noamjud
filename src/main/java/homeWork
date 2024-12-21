@@ -86,6 +86,153 @@ public static void q4(Node<Integer> x)
 	}
 
 
+ public Node removeAtPosition(int x)
+{
+        if (head == null) 
+		return null;
+        if (x == 1) 
+	{
+            head = head.next;
+            return head;
+        }
+        
+        Node current = head;
+        int pos = 1;
+        while (current != null && pos < x - 1) 
+	{
+            current = current.next;
+            pos++;
+        }
+        
+        if (current != null && current.next != null) 
+	{
+            current.next = current.next.next; 
+        }
+        
+        return head;
+    }	
+
+
+
+public boolean areAllElementsInSecondList(Node L1, Node L2) 
+{
+        if (L1 == null) 
+		return true;
+        Node currentL2 = L2;
+        while (currentL2 != null) 
+	{
+            if (currentL2.value == L1.value) 
+		{
+                	return areAllElementsInSecondList(L1.next, L2);
+            	}
+            currentL2 = currentL2.next;
+        }
+        
+        return false;
+    }
+
+
+
+public void printElementsInBothLists(Node L1, Node L2) 
+{
+        if (L1 == null) 
+		return;  
+        Node currentL2 = L2;
+        while (currentL2 != null) 
+	{
+            if (currentL2.value == L1.value) 
+	    {
+                System.out.println(L1.value); 
+                break;  
+            }
+            currentL2 = currentL2.next;
+        }
+        printElementsInBothLists(L1.next, L2);
+    }
+
+
+
+
+
+public Node createIntersectionList(Node L1, Node L2) 
+{
+        if (L1 == null || L2 == null) 
+		return null;
+        Node resultHead = null, resultTail = null;
+        while (L1 != null) 
+	{
+            Node currentL2 = L2;
+            while (currentL2 != null) 
+	    {
+                if (currentL2.value == L1.value) 
+		{
+		    Node newNode = new Node(L1.value);
+                    if (resultHead == null) 
+		    {
+                        resultHead = newNode;
+                        resultTail = resultHead;
+                    } 
+		    else {
+                        resultTail.next = newNode;
+                        resultTail = resultTail.next;
+                    }
+                    break; 
+                }
+                currentL2 = currentL2.next;
+            }
+            L1 = L1.next;
+        }
+        return resultHead;
+    }
+
+
+
+ public Node removeElementsInL1FromL2(Node L1, Node L2)
+ {
+        if (L1 == null) 
+		return null;
+        Node currentL2 = L2;
+        boolean foundInL2 = false;
+        while (currentL2 != null) 
+	{
+            if (currentL2.value == L1.value) 
+	    {
+                foundInL2 = true;
+                break;
+            }
+            currentL2 = currentL2.next;
+        }
+        if (foundInL2) 
+	{
+            L1 = L1.next;
+        } 
+	else 
+	{
+            L1.next = removeElementsInL1FromL2(L1.next, L2);  
+        }
+        return L1;
+    }
+
+public Node removeWithDummyNode(Node head, int value) 
+{
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node current = dummy;
+        while (current.next != null) 
+	{
+            if (current.next.value == value) 
+	    {
+                current.next = current.next.next; 
+                break;
+            }
+            current = current.next;
+        }
+        return dummy.next;
+    }
+
+
+
+
 	public static void main(String[] args) {
     public static Scanner reader=new Scanner(System.in);
 
